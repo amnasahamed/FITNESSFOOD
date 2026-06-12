@@ -14,7 +14,7 @@ export const userProfile: UserProfile = {
 export const dailyTimeline: TimelineEvent[] = [
   {
     id: 'wake-water',
-    time: '06:30 AM',
+    time: '07:30 AM',
     type: 'water',
     title: 'Morning Hydration',
     description: 'Start your metabolism and hydrate after waking up.',
@@ -22,12 +22,12 @@ export const dailyTimeline: TimelineEvent[] = [
   },
   {
     id: 'pre-workout',
-    time: '07:00 AM',
+    time: '07:40 AM',
     type: 'meal',
     title: 'Pre-workout Meal',
-    description: 'Fuel up for your morning session.',
+    description: 'Quick fuel before leaving for the gym (10 min travel).',
     items: [
-      '2 whole eggs',
+      '2 whole eggs (pre-boiled recommended for time)',
       'Chia seeds soaked in water',
       'Black coffee (optional)',
       '1 Nendra banana (steamed or ripe - excellent pre-workout carb)',
@@ -38,14 +38,15 @@ export const dailyTimeline: TimelineEvent[] = [
     time: '08:00 AM',
     type: 'water',
     title: 'Workout Hydration',
+    description: 'At the gym.',
     items: ['500ml water sipped throughout session'],
   },
   {
     id: 'post-workout',
-    time: '09:00 AM',
+    time: '09:30 AM',
     type: 'meal',
     title: 'Post-workout Breakfast',
-    description: 'Muscle recovery and replenishment.',
+    description: 'Muscle recovery and replenishment after gym.',
     items: [
       '2 whole eggs + 3 egg whites',
       '2 slices whole wheat bread',
@@ -57,21 +58,21 @@ export const dailyTimeline: TimelineEvent[] = [
   },
   {
     id: 'mid-morning-water',
-    time: '11:00 AM',
+    time: '11:30 AM',
     type: 'water',
     title: 'Mid-morning Hydration',
     items: ['500ml of water'],
   },
   {
     id: 'pre-lunch-water',
-    time: '01:00 PM',
+    time: '01:30 PM',
     type: 'water',
     title: 'Pre-Lunch Hydration',
     items: ['500ml of water'],
   },
   {
     id: 'lunch',
-    time: '01:30 PM',
+    time: '02:00 PM',
     type: 'meal',
     title: 'Lunch',
     items: [
@@ -84,14 +85,14 @@ export const dailyTimeline: TimelineEvent[] = [
   },
   {
     id: 'afternoon-water',
-    time: '03:30 PM',
+    time: '04:00 PM',
     type: 'water',
     title: 'Afternoon Hydration',
     items: ['500ml of water'],
   },
   {
     id: 'evening-snack',
-    time: '05:00 PM',
+    time: '05:30 PM',
     type: 'meal',
     title: 'Evening Yogurt Bowl',
     description: 'A daily serving of Greek yogurt helps with slow-digesting casein protein and probiotics for gut health.',
@@ -104,14 +105,14 @@ export const dailyTimeline: TimelineEvent[] = [
   },
   {
     id: 'evening-water',
-    time: '06:30 PM',
+    time: '07:00 PM',
     type: 'water',
     title: 'Evening Hydration',
     items: ['500ml of water'],
   },
   {
     id: 'dinner',
-    time: '08:00 PM',
+    time: '08:30 PM',
     type: 'meal',
     title: 'Dinner',
     items: [
@@ -124,7 +125,7 @@ export const dailyTimeline: TimelineEvent[] = [
   },
   {
     id: 'night-water',
-    time: '09:30 PM',
+    time: '10:00 PM',
     type: 'water',
     title: 'Night Hydration',
     description: 'Final hydration before bed.',

@@ -5,7 +5,7 @@ import { DailyTimeline } from './components/DailyTimeline';
 import { LoggingPanel } from './components/LoggingPanel';
 import { ProgressPanel } from './components/ProgressPanel';
 import { SettingsPanel } from './components/SettingsPanel';
-import { Gamepad2 } from 'lucide-react';
+import { Gamepad2, Map, PenLine, TrendingUp, Settings } from 'lucide-react';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<'overview' | 'logging' | 'progress' | 'settings'>('overview');
@@ -24,18 +24,16 @@ export default function App() {
     }
   };
 
-  const getTabClass = (tabName: string) => {
-    const isActive = activeTab === tabName;
-    return `px-5 py-2.5 text-[10px] sm:text-xs font-black uppercase tracking-widest rounded-xl border-2 transition-all cursor-pointer ${
-      isActive 
-        ? 'bg-indigo-50 text-indigo-600 border-indigo-200 shadow-[0_2px_0_rgb(199,210,254)] hover:translate-y-[2px] hover:shadow-none' 
-        : 'bg-white text-slate-500 border-slate-200 shadow-[0_2px_0_rgb(226,232,240)] hover:translate-y-[2px] hover:shadow-none hover:bg-slate-50'
-    }`;
-  };
+  const navItems = [
+    { id: 'overview', label: 'Quest', icon: Map },
+    { id: 'logging', label: 'Log', icon: PenLine },
+    { id: 'progress', label: 'Stats', icon: TrendingUp },
+    { id: 'settings', label: 'Config', icon: Settings }
+  ];
 
   return (
-    <div className="min-h-screen bg-[#F4F7FE] text-slate-800 p-4 md:p-6 font-sans flex flex-col gap-6">
-      <header className="max-w-6xl mx-auto w-full flex justify-between items-center bg-white border-2 border-slate-200/80 rounded-[2rem] p-5 shadow-sm">
+    <div className="min-h-[100dvh] bg-[#F4F7FE] text-slate-800 p-4 md:p-6 pb-24 md:pb-6 font-sans flex flex-col gap-6 overflow-x-hidden">
+      <header className="max-w-6xl mx-auto w-full flex justify-between items-center bg-white border-2 border-slate-200/80 rounded-[2rem] p-5 shadow-sm z-10 transition-all">
         <div className="flex items-center gap-4">
           <div className="w-14 h-14 rounded-2xl bg-indigo-500 shadow-[0_4px_0_rgb(67,56,202)] flex items-center justify-center text-white transform -rotate-3">
             <Gamepad2 className="w-7 h-7 fill-current border-none" />
@@ -69,12 +67,35 @@ export default function App() {
         </div>
       </main>
 
-      <footer className="max-w-6xl mx-auto w-full flex flex-wrap justify-center gap-2 sm:gap-4 lg:gap-8 py-4 pt-2">
-        <button onClick={() => setActiveTab('overview')} className={getTabClass('overview')}>Overview</button>
-        <button onClick={() => setActiveTab('logging')} className={getTabClass('logging')}>Logging</button>
-        <button onClick={() => setActiveTab('progress')} className={getTabClass('progress')}>Progress</button>
-        <button onClick={() => setActiveTab('settings')} className={getTabClass('settings')}>Settings</button>
-      </footer>
+      <nav 
+        className="fixed bottom-0 left-0 right-0 bg-white border-t-2 border-slate-200 z-50 md:sticky md:bottom-6 md:rounded-[2rem] md:mx-auto md:max-w-lg md:border-2 md:mt-2 shadow-[0_-10px_30px_rgba(0,0,0,0.05)] md:shadow-lg transition-transform"
+        style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
+      >
+        <div className="flex justify-around items-center h-16 sm:h-20 px-2 sm:px-6">
+          {navItems.map((item) => {
+            const isActive = activeTab === item.id;
+            const Icon = item.icon;
+            return (
+              <button
+                key={item.id}
+                onClick={() => setActiveTab(item.id as any)}
+                className={`flex flex-col items-center justify-center w-full h-full transition-all duration-300 active:scale-95 ${
+                  isActive ? 'text-indigo-600' : 'text-slate-400 hover:text-slate-600'
+                }`}
+              >
+                <div className={`relative p-1.5 sm:p-2 rounded-xl mb-1 transition-all duration-300 ${
+                  isActive ? 'bg-indigo-50 shadow-[0_2px_0_rgb(199,210,254)] -translate-y-1' : 'bg-transparent'
+                }`}>
+                  <Icon className={`w-[22px] h-[22px] sm:w-6 sm:h-6 transition-all ${isActive ? 'stroke-[2.5]' : 'stroke-2'}`} />
+                </div>
+                <span className={`text-[10px] sm:text-[11px] font-black uppercase tracking-widest transition-colors ${isActive ? 'text-indigo-600' : 'text-slate-400'}`}>
+                  {item.label}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </nav>
     </div>
   );
 }
