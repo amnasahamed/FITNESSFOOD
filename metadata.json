@@ -1,0 +1,6 @@
+{
+  "name": "FitPlan Dashboard",
+  "description": "Personalized nutrition, hydration, and workout daily schedule tailored for body recomposition.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
